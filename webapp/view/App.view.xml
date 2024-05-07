@@ -1,0 +1,12 @@
+<mvc:View controllerName="com.flex.masterdetail.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <Shell id="shell" appWidthLimited="false">
+        <App id="app" autoFocus="false">
+            <f:FlexibleColumnLayout id="fcl" layout="{layout>/layout}" backgroundDesign="Translucent">
+            </f:FlexibleColumnLayout>
+        </App>
+    </Shell>
+</mvc:View>
