@@ -47,33 +47,12 @@
                         width="12em">
                         <Text id="_IDGenText1" text="{i18n>orderId}" />
                     </Column>
-                    <Column id="_IDGenColumn2"
-                        minScreenWidth="Tablet"
-                        demandPopin="true">
-                        <Text id="_IDGenText2" text="{i18n>orderDate}" />
-                    </Column>
-                    <Column id="_IDGenColumn3"
-                        minScreenWidth="Tablet"
-                        demandPopin="true">
-                        <Text id="_IDGenText6" text="{i18n>requiredDate}" />
-                    </Column>
-                    <Column id="_IDGenColumn4"
-                        minScreenWidth="Tablet"
-                        demandPopin="true">
-                        <Text id="_IDGenText7" text="{i18n>shippedDate}" />
-                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press=".onListItemPress">
                         <cells>
                             <ObjectIdentifier id="_IDGenObjectIdentifier1"
                                 title="{orders>OrderID}"/>
-                            <Text id="_IDGenText3"
-                                text="{orders>OrderDate}" />
-                            <Text id="_IDGenText4"
-                                text="{orders>RequiredDate}" />
-                            <Text id="_IDGenText5"
-                                text="{orders>ShippedDate}" />
                         </cells>
                     </ColumnListItem>
                 </items>

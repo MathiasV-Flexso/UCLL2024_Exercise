@@ -19,7 +19,6 @@ sap.ui.define([
             async onRouteMatched(event) {
                 this.OrderID = event.getParameter("arguments").OrderID;
                 // Employee
-                // TODO: Check if Employee is filled
                 this.getJSONModel("employee").setProperty('/employeeLoading', true);
                 models.readEmployee().then(result => {
                     this.getJSONModel("employee").setProperty('/employee', result);
@@ -49,29 +48,26 @@ sap.ui.define([
             },
 
             onListItemPress(event){
-                const SelectedOrderID = event.getSource().getBindingContext('orders').getObject().OrderID;
-                this.getJSONModel("orders").setProperty('/selectedOrder', SelectedOrderID);
-                this.getOwnerComponent().getRouter().navTo("RouteDetail", { OrderID: SelectedOrderID });
+                // Navigate to a third screen and add product & supplier details there. 
             },
 
             onPressAddProduct() {
-                this.openDialog('AddProduct')
+                this.openDialog('AddProduct');
             },
 
             onCloseAddProductDialog() {
-                this.closeDialog('AddProduct')
+                this.closeDialog('AddProduct');
             },
 
             async onAddProduct() {
-                const productModel = this.getJSONModel('product');
-                const newProduct = {
-                    OrderID: this.OrderID,
-                    ProductID: productModel.getProperty('/selectedProductKey'),
+                const newOrderDetail = {
+                    OrderID: 0,
+                    ProductID: 0,
                     UnitPrice: 0,
-                    Quantity: productModel.getProperty('/selectedProductQuantity'),
+                    Quantity: 0,
                     Discount: 0
                 }
-                await models.createOrderDetail(this.OrderID, newProduct);
+                await models.createOrderDetail(newOrderDetail);
 
                 this.closeDialog('AddProduct');
 

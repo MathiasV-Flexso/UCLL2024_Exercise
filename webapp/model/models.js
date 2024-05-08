@@ -69,89 +69,31 @@ sap.ui.define([
                 return new Promise((resolve, reject) => {
                     oNorthwindModel.read(`/Orders`,
                         {
-                            filters: [
-                                new Filter("EmployeeID", FilterOperator.EQ, EmployeeID)
-                            ],
-                            urlParameters: {
-                                "$expand": "Order_Details"
-                            },
                             success: (oResult) => {
                                 resolve(oResult.results);
                             },
                             error: (oError) => {
-                                handleError(oError);
                                 reject(oError);
                             }
                         })
                 })
             },
 
-            readOrderDetails(OrderID) {
-                // @ts-ignore
-                return new Promise((resolve, reject) => {
-                    oNorthwindModel.read(`/Order_Details`,
-                        {
-                            filters: [
-                                new Filter("OrderID", FilterOperator.EQ, OrderID)
-                            ],
-                            urlParameters: {
-                                "$expand": "Product"
-                            },
-                            success: (oResult) => {
-                                resolve(oResult.results);
-                            },
-                            error: (oError) => {
-                                handleError(oError);
-                                reject(oError);
-                            }
-                        })
-                })
+            readOrderDetails() {
+                // Hint: /Order_Details
             },
 
             createOrderDetail(orderDetail) {
-                return new Promise((resolve, reject) => {
-                    oNorthwindModel.create("/Order_Details", orderDetail, {
-                        success: (oResult) => {
-                            resolve(oResult);
-                        },
-                        error: (oError) => {
-                            handleError(oError);
-                            reject(oError);
-                        }
-                    });
-                });
+                // Hint: /Order_Details
             },
 
             readEmployee() {
-                // @ts-ignore
-                return new Promise((resolve, reject) => {
-                    oNorthwindModel.read(`/Employees(${EmployeeID})`,
-                        {
-                            success: (oResult) => {
-                                resolve(oResult);
-                            },
-                            error: (oError) => {
-                                handleError(oError);
-                                reject(oError);
-                            }
-                        })
-                })
+                // Hint: /Employees
             },
 
             readProducts() {
                 // @ts-ignore
-                return new Promise((resolve, reject) => {
-                    oNorthwindModel.read(`/Products`,
-                        {
-                            success: (oResult) => {
-                                resolve(oResult.results);
-                            },
-                            error: (oError) => {
-                                handleError(oError);
-                                reject(oError);
-                            }
-                        })
-                })
+                // Hint: /Products
             }
         };
     });

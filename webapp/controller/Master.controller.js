@@ -36,11 +36,10 @@ sap.ui.define([
             },
 
             onListItemPress(event){
-                const SelectedOrderID = event.getSource().getBindingContext('orders').getObject().OrderID;
+                const SelectedOrder = event.getSource().getBindingContext('orders').getObject();
                 const oNextUIState = this.getOwnerComponent().getHelper().getNextUIState(1);
 
-                this.getJSONModel("orders").setProperty('/selectedOrderId', SelectedOrderID);
-                this.getOwnerComponent().getRouter().navTo("RouteDetail", { OrderID: SelectedOrderID, layout: oNextUIState.layout });
+                this.getOwnerComponent().getRouter().navTo(/** To do :) */);
             }
         });
     });
