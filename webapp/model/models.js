@@ -2,7 +2,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/Device",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageToast"
 ],
     /**
      * provide app-view type models (as in the first "V" in MVVC)
@@ -12,10 +13,14 @@ sap.ui.define([
      * 
      * @returns {Function} createDeviceModel() for providing runtime info for the device the UI5 app is running on
      */
-    function (JSONModel, Device, Filter, FilterOperator) {
+    function (JSONModel, Device, Filter, FilterOperator, MessageToast) {
         "use strict";
         const EmployeeID = 1;
         let oNorthwindModel = null;
+
+        function handleError (error) {
+            MessageToast.show(error.message);
+        }
 
         return {
             // @ts-ignore
@@ -45,6 +50,16 @@ sap.ui.define([
                 return oModel;
             },
 
+            createProductModel: function () {
+                const oModel = new JSONModel({
+                    productsLoading: null,
+                    products: null,
+                    selectedProductKey: null,
+                    selectedProductQuantity: null,
+                });
+                return oModel;
+            },
+
             registerODataModels(oNorthwind) {
                 oNorthwindModel = oNorthwind;
             },
@@ -64,6 +79,7 @@ sap.ui.define([
                                 resolve(oResult.results);
                             },
                             error: (oError) => {
+                                handleError(oError);
                                 reject(oError);
                             }
                         })
@@ -85,10 +101,25 @@ sap.ui.define([
                                 resolve(oResult.results);
                             },
                             error: (oError) => {
+                                handleError(oError);
                                 reject(oError);
                             }
                         })
                 })
+            },
+
+            createOrderDetail(orderDetail) {
+                return new Promise((resolve, reject) => {
+                    oNorthwindModel.create("/Order_Details", orderDetail, {
+                        success: (oResult) => {
+                            resolve(oResult);
+                        },
+                        error: (oError) => {
+                            handleError(oError);
+                            reject(oError);
+                        }
+                    });
+                });
             },
 
             readEmployee() {
@@ -100,6 +131,23 @@ sap.ui.define([
                                 resolve(oResult);
                             },
                             error: (oError) => {
+                                handleError(oError);
+                                reject(oError);
+                            }
+                        })
+                })
+            },
+
+            readProducts() {
+                // @ts-ignore
+                return new Promise((resolve, reject) => {
+                    oNorthwindModel.read(`/Products`,
+                        {
+                            success: (oResult) => {
+                                resolve(oResult.results);
+                            },
+                            error: (oError) => {
+                                handleError(oError);
                                 reject(oError);
                             }
                         })

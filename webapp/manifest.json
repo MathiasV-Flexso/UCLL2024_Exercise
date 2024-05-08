@@ -81,7 +81,10 @@
       "oNorthwind": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+          "useBatch" : false,
+			    "defaultBindingMode" : "TwoWay"
+        }
       },
       "layout": {
         "type": "sap.ui.model.json.JSONModel"

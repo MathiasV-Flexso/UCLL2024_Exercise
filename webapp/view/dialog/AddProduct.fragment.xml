@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="AddProductDialog"
+        title="{i18n>addProductDialogTitle}"
+        draggable="false"
+        resizable="false"
+        busyIndicatorDelay="0"
+        contentWidth="30%"
+    >
+        <content>
+            <HBox id="_IDGenHBox1">
+            <ComboBox id="_IDGenComboBox1"
+				showSecondaryValues= "true"
+				items="{
+					path: 'product>/products',
+					sorter: { path: 'ProductID' }
+				}"
+                selectedKey="{product>/selectedProductKey}">
+				<core:ListItem key="{product>ProductID}" text="{product>ProductName}" additionalText="{product>ProductID}"/>
+			</ComboBox>
+            <Input id="_IDGenInput1" value="{product>/selectedProductQuantity}"/>
+            </HBox>
+        </content>
+        <beginButton>
+            <Button id="idCloseAddProductDialogButton"
+                text="{i18n>close}"
+                press="onCloseAddProductDialog"
+            />
+        </beginButton>
+        <endButton>
+            <Button id="idAddProductButton"
+                text="{i18n>add}"
+                press="onAddProduct"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

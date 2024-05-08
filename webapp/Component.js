@@ -41,6 +41,7 @@ sap.ui.define([
                 this.setModel(models.createDeviceModel(), "device");
                 this.setModel(models.createOrdersModel(), "orders");
                 this.setModel(models.createEmployeeModel(), "employee");
+                this.setModel(models.createProductModel(), "product");
             },
 
             /**
