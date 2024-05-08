@@ -1,42 +1,38 @@
-## Application Details
-|               |
-| ------------- |
-|**Generation Date and Time**<br>Tue May 07 2024 07:18:46 GMT+0000 (Coordinated Universal Time)|
-|**App Generator**<br>@sap/generator-fiori-freestyle|
-|**App Generator Version**<br>1.13.3|
-|**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>simple|
-|**Service Type**<br>OData Url|
-|**Service URL**<br>https://services.odata.org/V2/Northwind/Northwind.svc/
-|**Module Name**<br>masterdetail|
-|**Application Title**<br>Master Detail|
-|**Namespace**<br>com.flex|
-|**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.123.1|
-|**Enable Code Assist Libraries**<br>True|
-|**Enable TypeScript**<br>False|
-|**Add Eslint configuration**<br>False|
+# Exercise UCLL Master-detail
 
-## masterdetail
+Note: This project is for learning/teaching purposes only. As this is using Northwind API's, data cannot be created/updated. Errors when executing create/update/delete requests are expected. If you want to be able to execute them, please use your own services & data.
 
-An SAP Fiori application.
+## Setup
 
-### Starting the generated app
+1. Create Northwind destination
+2. Download this project as zip
+3. Unzip the project on your local machine
+4. Open SAP Business Application Studio
+5. Copy the entire project into your workspace
+6. Open up the project
+7. Run command 'npm i'
+8. Run command 'npm run start'
+9. Check implementation of Northwind destination in project: data should be appearing
 
--   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply run the following from the generated app root folder:
+## Exercise
 
-```
-    npm start
-```
+1. Retrieve employee information. EmployeeId is given as a constant variable in models.js
+2. Filter Orders by employee, using the same employee number
+3. Show me more details about orders by adding table columns
+4. Fix navigation to detail page when selecting a line. Hint: look at the targets defined in manifest.json
+5. Retrieve all order details for the selected order
+7. Show order detail data in the detail view
+8. Retrieve a list of products
+9. When clicking add, I should be able to add a product to the order. Please complete the necessary function in Detail.controller & complete the models.js function
 
-- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+## Optional
 
-```
-    npm run start-mock
-```
-
-#### Pre-requisites:
-
-1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
-
-
+1. When selecting an order detail, I navigate to a detaildetail.view.xml page. On this page, I want to see all details about the product's supplier
+2. I want to sort & filter my order details by Category
+3. I want to change the amount of a certain product
+4. Before entering the app, I want the possibility to select a user for which I want to see all orders
+5. I want to be able to delete products from an order
+6. I want a counter to see how many orders there are for a certain employee
+7. I want a counter to see how many products there are in a certain order
+8. I want to see the total price of an order detail (qty * amount)
+9. I want to see the total price of an order, and the total amount of discount the employee got
